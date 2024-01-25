@@ -1,33 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+:root {
+  --light-color: #f1f0da;
+  --accent-color: #444341;
+}
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Press Start 2P", system-ui;
   line-height: 1.5;
 
-  color: #ebe7ef;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  color: var(--light-color);
 }
 
 body {
   background: radial-gradient(
-      circle at top,
-      rgba(241, 210, 70, 0.98),
-      rgba(250, 176, 103, 0.87)
-    ),
-    url('bg-pattern-dark.png');
-  background-repeat: repeat;
-  background-size: 100% 100%, 30% 30%, 100% 100%;
-  min-height: 110rem;
+    circle,
+    #444341,
+    #6d6a64,
+    #979489,
+    #c4c1b1,
+    #f1f0da
+  );
+  min-height: 100vh;
 }
+
+/* Стилизую заголовок */
 
 header {
   text-align: center;
@@ -41,21 +42,58 @@ header img {
 }
 
 h1 {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Press Start 2P", system-ui;
   font-size: 3rem;
   margin: 0 auto 3rem auto;
-  color: #3f3b00;
+  color: var(--light-color);
 }
+
+/* Стилизую контейнер */
 
 #game-container {
   max-width: 45rem;
-  margin: 3rem auto;
+  margin-inline: auto;
+  margin-top: 48px;
+  margin-bottom: 10px;
   padding: 2rem;
-  border-radius: 6px;
-  background: linear-gradient(#383624, #282617);
+  border-radius: 50px;
+  background-color: var(--accent-color);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   position: relative;
 }
+
+/* Стилизую подсветку для активного игрока */
+
+#players.highlight-player li.active {
+  border-color: var(--light-color);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#players.highlight-player li.active .player-name,
+#players.highlight-player li.active .player-symbol {
+  color: var(--light-color);
+}
+
+/* Стилизую поле изменить/сохранить логин */
+
+#players button {
+  width: 3rem;
+  border: none;
+  background: none;
+  color: var(--light-color);
+  font-family: "Press Start 2P", system-ui;
+  font-size: 0.6rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.5rem 0.25rem 0.25rem 0.25rem;
+  text-align: center;
+}
+
+#players button:hover {
+  color: var(--light-color);
+}
+
+/* Стилизую отображение логина */
 
 #players {
   list-style: none;
@@ -74,32 +112,6 @@ h1 {
   border: 2px solid transparent;
 }
 
-#players.highlight-player li.active {
-  border-color: #f6e35a;
-  animation: pulse 2s infinite ease-in-out;
-}
-
-#players.highlight-player li.active .player-name,
-#players.highlight-player li.active .player-symbol {
-  color: #f6e35a;
-}
-
-#players button {
-  width: 3rem;
-  border: none;
-  background: none;
-  color: #c3ba78;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: color 0.2s;
-  padding: 0.5rem 0.25rem 0.25rem 0.25rem;
-  text-align: center;
-}
-
-#players button:hover {
-  color: #f8ca31;
-}
-
 .player {
   border: 2px solid transparent;
   padding: 0.5rem;
@@ -110,9 +122,8 @@ h1 {
 .player-name {
   display: inline-block;
   width: 10rem;
-  font-size: 1rem;
-  color: #e1dec7;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--light-color);
   margin: 0;
   padding: 0.5rem;
   border-radius: 4px;
@@ -120,22 +131,26 @@ h1 {
   text-align: center;
 }
 
+/* Стилизую ввод логина */
+
 .player input {
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.7rem;
   width: 10rem;
   border: none;
   padding: 0.5rem;
   animation: pulse-text 2s infinite;
-  background-color: #46432f;
+  background-color: var(--light-color);
   text-align: center;
   text-transform: uppercase;
 }
 
+/* Стилизую игровое поле до игры */
+
 .player-symbol {
   margin-left: 1rem;
   font-size: 1rem;
-  color: #e1dec7;
+  color: var(--light-color);
 }
 
 ol {
@@ -151,13 +166,15 @@ ol {
 #pre-game button {
   cursor: pointer;
   background: none;
-  color: #f8c031;
+  color: var(--light-color);
   border: none;
-  font-family: 'Caprasimo', cursive;
+  font-family: "Press Start 2P", system-ui;
   font-size: 4rem;
   text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
   animation: pulse-text-size 2s infinite ease-out;
 }
+
+/* Стилизую игровое поле во время игры */
 
 #game-board {
   display: flex;
@@ -181,14 +198,16 @@ ol {
 #game-board button {
   width: 8rem;
   height: 8rem;
-  border: none;
-  background: #aca788;
-  color: #3f3b00;
+  border-radius: 15px;
+  background: var(--light-color);
+  color: var(--accent-color);
   font-size: 5rem;
   cursor: pointer;
-  font-family: 'Caprasimo', cursive;
+  font-family: "Press Start 2P", system-ui;
   padding: 1rem;
 }
+
+/* Стилизую экран геймовера */
 
 #game-over {
   position: absolute;
@@ -200,22 +219,24 @@ ol {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(40, 38, 23, 0.95);
+  background-color: var(--accent-color);
+  border-radius: 50px;
+  opacity: 0.95;
   animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
 }
 
 #game-over h2 {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Press Start 2P", system-ui;
   font-size: 4rem;
   text-align: center;
-  color: #fcd256;
+  color: var(--light-color);
   margin: 0;
 }
 
 #game-over p {
   font-size: 2rem;
   text-align: center;
-  color: #e1dec7;
+  color: var(--light-color);
 }
 
 #game-over button {
@@ -223,28 +244,33 @@ ol {
   margin: 0 auto;
   font-size: 1.5rem;
   background: none;
-  border: 2px solid #fcd256;
-  color: #fcd256;
+  border: 2px solid var(--light-color);
+  color: var(--light-color);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s, color 0.2s;
-  box-shadow: 0 0 8px rgba(255, 187, 0, 0.4);
+  box-shadow: 0 0 8px rgba(68, 67, 65, 0.4);
+  font-family: "Press Start 2P", system-ui;
 }
 
 #game-over button:hover {
-  background: #fcd256;
-  color: #3f3b00;
+  background: var(--light-color);
+  color: #24231f;
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(255, 187, 0, 0.8);
+  box-shadow: 0 0 20px rgba(104, 103, 102, 0.8);
 }
+
+/* Стилизую лог ходов */
 
 #log {
   max-width: 20rem;
-  color: #3f3b00;
+  color: inherit;
   list-style: none;
   margin: 2rem auto;
   padding: 0;
+  background-color: var(--accent-color);
+  border-radius: 25px;
   text-align: center;
 }
 
@@ -254,36 +280,9 @@ ol {
   margin: 0.75rem;
 }
 
-#log li.highlighted {
-  background-color: #3f3b00;
-  color: white;
-}
+/* АНИМАЦИИ */
 
-#game-hints {
-  text-align: center;
-  color: #46432f;
-}
-
-#game-hints h2 {
-  font-family: 'Caprasimo', cursive;
-  font-size: 2rem;
-  margin: 0;
-}
-
-#game-hints ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#game-hints button {
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  color: #23221f;
-  font: inherit;
-  margin-top: 1.5rem;
-}
+/* Слайд-ин для лога */
 
 @keyframes slide-in-from-left {
   0% {
@@ -295,6 +294,8 @@ ol {
     transform: translateX(0);
   }
 }
+
+/* Меняю цвет текста для акцента */
 
 @keyframes pulse-text {
   0% {
@@ -308,6 +309,8 @@ ol {
   }
 }
 
+/* Меняю размер шрифта для акцента */
+
 @keyframes pulse-text-size {
   0% {
     transform: scale(1);
@@ -320,22 +323,25 @@ ol {
   }
 }
 
+/* Пульсация текста */
+
 @keyframes pulse {
   0% {
-    border-color: #f6e35a;
+    border-color: var(--light-color);
     box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
   }
   50% {
-    border-color: #f8c031;
+    border-color: #6b6b68;
     box-shadow: 0 0 0 0.5rem rgba(248, 165, 49, 0);
   }
   100% {
-    border-color: #f6e35a;
+    border-color: var(--light-color);
     box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
   }
 }
 
-/* Fancy animation for showing the "Game Over" element */
+/* Поп-ин для экрана проигрыша */
+
 @keyframes pop-in {
   0% {
     transform: scale(0);
